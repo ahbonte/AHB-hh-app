@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <deployment-targets>
+        <target device="tizen">false</target>
+        <target device="mobileweb">false</target>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+    </deployment-targets>
+    <sdk-version>2.1.4.GA</sdk-version>
+    <id>net.foodcarecity.healthyhometown</id>
+    <name>FoodCareCIty</name>
+    <version>1.0.0</version>
+    <publisher>FoodCare, Inc.</publisher>
+    <url>http://m.foodcare.me/</url>
+    <description>FCCHealthyHometown</description>
+    <copyright>2012-2013 by FoodCare, Inc</copyright>
+    <icon>Icon.png</icon>
+    <persistent-wifi>true</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>412485bf-bfe0-4187-808f-55d5c118db0b</guid>
+    <property name="ti.ui.defaultunit">system</property>
+    <property name="ti.android.google.map.api.key.development">0ZnKXkWA2dIAu2EM-OV4ZD2lJY3sEWE5TSgjJNg</property>
+    <!-- Google Key Fingerprint: C5:9B:DD:CF:27:F0:6D:8F:02:D3:0E:9D:63:45:B8:CC (nick@foodcare.me)-->
+    <property name="ti.android.google.map.api.key.production">0D-1ixn5hO7GmcNJ1Yj-S5rdRW6fhCBVj-h39ZA</property>
+	<property name="ti.android.bug2373.finishfalseroot" type="bool">true</property>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:versionCode="1" android:versionName="1.0.0">
+            <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="10"/>
+            <application>
+                <activity android:configChanges="keyboardHidden"
+                    android:name="org.appcelerator.titanium.TiActivity" android:screenOrientation="portrait"/>
+                <activity android:configChanges="keyboardHidden"
+                    android:launchMode="singleTask"
+                    android:name="ti.modules.titanium.map.TiMapActivity" android:screenOrientation="portrait"/>
+                <activity android:configChanges="keyboardHidden"
+                    android:name="org.appcelerator.titanium.TiTranslucentActivity"
+                    android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+                <activity android:configChanges="keyboardHidden"
+                    android:name="org.appcelerator.titanium.TiModalActivity"
+                    android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+                <activity android:configChanges="keyboardHidden"
+                    android:name="ti.modules.titanium.ui.TiTabActivity" android:screenOrientation="portrait"/>
+            </application>
+        </manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules/>
+    <ios>
+        <plist>
+            <dict>
+                <key>UIRequiresPersistentWiFi</key>
+                <true/>
+                <key>UIPrerenderedIcon</key>
+                <true/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleBlackTranslucent</string>
+                <key>UISupportedInterfaceOrientations</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                </array>
+                <key>UIAppFonts</key>
+                <array>
+                    <!--string>BasicGothicMobiPro-BoldItalic.ttf</string>
+                    <string>BasicGothicMobiPro-Italic.ttf</string>
+                    <string>BasicGothicMobiPro-Bold.ttf</string>
+                    <string>BasicGothicMobiPro.ttf</string-->
+                    <string>MuseoSans_100_Italic.otf</string>
+                    <string>MuseoSans_100.otf</string>
+                    <string>MuseoSans_300.otf</string>
+                    <string>MuseoSans_500_Italic.otf</string>
+                    <string>MuseoSans_500.otf</string>
+                    <string>MuseoSans_900.otf</string>
+                </array>
+            </dict>
+        </plist>
+    </ios>
+</ti:app>

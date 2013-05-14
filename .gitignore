@@ -1,0 +1,7 @@
+tmp
+.DS_Store
+.project
+.settings
+build
+build.log
+.fastdev.lock

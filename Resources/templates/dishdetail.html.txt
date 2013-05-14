@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodCare Dish Detail View</title>
+<script language=javascript type='text/javascript'> 
+function toggleDiv() {
+    document.getElementById('data1').style.display="none";
+    document.getElementById('data2').style.display="inline";
+}
+</script>
+
+
+<style>
+body {
+  margin: 0px;
+  padding: 0;
+  font-family: Basic Gothic Mobi Pro, BasicGothicMobiPro, Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  background-color: #CCC;
+   -webkit-text-size-adjust: none;
+}
+
+.alertbox {
+  background-color: #FFFFE0; 
+  margin: 5%; 
+  padding: 5px
+}
+.color-red {
+  color: #6E0D25;
+  display: inline;
+}
+
+.color-green {
+ color: green;
+ display: inline;
+}
+
+div#dishdetail {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.demo {
+  color: #999;
+}
+
+.alert {
+  font-size: 10pt;
+}
+
+
+div#dishdetail_container{
+  display: block;
+  margin:  8px 4px;
+  padding: 0px;
+  background-color: #FFFFFF;
+  border-radius: 9px;
+}
+
+div#dishdetail_wrapper{
+  display: block;
+  margin: 0px;
+  padding: 8px;
+}
+
+div.headline {
+  font-size: 12pt;
+  font-weight:bold;
+  margin-top:50px;
+}
+.fineprint {
+    font-size: 7pt;
+}
+div.providedby {
+  margin: 0px 0px 20px 0px;
+}
+div.column {
+  width: 50%;
+  float: left;  
+}
+
+#data1 div:nth-child(12n-0), #data1 div:nth-child(12n-1), #data1 div:nth-child(12n-2), #data1 div:nth-child(12n-3),  #data1 div:nth-child(12n-4),  #data1 div:nth-child(12n-5) {
+ background-color: #EDEDED; 
+}
+
+#data2 div:nth-child(12n-0), #data2 div:nth-child(12n-1), #data2 div:nth-child(12n-2), #data2 div:nth-child(12n-3),  #data2 div:nth-child(12n-4),  #data2 div:nth-child(12n-5) {
+ background-color: #EDEDED; 
+}
+
+
+div#nutritionbox {
+    border-radius: 5px;
+    border: 2px solid #EDEDED;       
+}
+
+.alertbox {
+    border-radius: 5px;
+    border: 2px solid #EDEDED;
+    font-size: 9pt;       
+}
+
+
+div#nutritionheader {
+  text-decoration: underline;
+  display: inline;
+}
+
+
+div.labelcell {
+  width: 20%;
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  margin: 0px;
+  font-size: 9pt;
+  padding: 5px 0px 5px 0px;
+}
+
+div.valuecell {
+  width: 25%;
+  float: left;
+  text-align: left;
+  margin: 0px;
+  padding: 5px 0px 5px 0px;
+  font-size: 9pt; 
+}
+
+div.spacercell {
+  width: 5%;
+  float: left;
+  text-align: left;
+  margin: 0px;
+  padding: 5px 0px 5px 0px;
+  font-size: 9pt; 
+}
+
+div.notes {
+  margin: 5px 0px 0px 0px;
+}
+.hidden {
+  display:none;
+}
+.recommend{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	font-size:9px
+}
+.link-head{
+	font-family:Arial, Helvetica, sans-serif;
+	color:blue;
+	font-size:10px
+} 
+.link-table{
+	background-image: -webkit-linear-gradient(top, #E6E6E6 0%, #FFFBFA 100%);
+}
+</style>
+</head>
+<body onLoad='setTimeout(toggleDiv, 300);'>
+<img src="<%= img_base %>/images/pages/kudos.png" style="float: right; margin: 10px" id="kudos" border=0>
+<div id="dishdetail">
+	<div id="dishdetail_container">
+		<div id="dishdetail_wrapper">
+		    <div class="headline"><%=name%></div>    
+		    <%  if (passing_guidelines.length > 0) { %>
+		      <br>
+   		      <div class="demo alert">Guidelines Compliant for You</div>
+   		      <%  for (var l=0; l < passing_guidelines.length; l++) { %>
+   		        <div class="demo subhheadline"><%= passing_guidelines[l] %></div>
+  	          <% } %>       		    
+		    <% } %>
+		    <table width="100%" class='link-table'>
+		    	<tr>
+		    		<td rowspan='2'><img src='/images/table_icons/like.png' alt='Like' height='34' width='34'/></td>
+		    		<td class='recommend'>Want recomendation that are personalized for you?</td>
+		    	</tr>
+		    	<tr>
+		    		<td class='link-head'>Sign up for free account!</td>
+		    	</tr>
+		    </table>
+		    <%  if (serving_size_description) { %>
+		    <br>		    
+		    <div class="demo alert">Serving Size: <%= serving_size_description %></div>		    
+		    <div class="fineprint">* Please check with your server to verify correct serving size.</div>
+		    <br>
+		    <% } %>
+		    
+		   <%  if (required.length > 0) { %>
+		      <br>
+   		      <div class="demo alert">Missing Nutrients</div>
+   		      <div class="demo subhheadline">We are unable calculate the complete guidelines because the restaurant is not reporting nutrient information on the following nutrients:</div>
+   		      <%  for (var l=0; l < required.length; l++) { %>
+   		        <div class="demo subhheadline"><%= required[l] %></div>
+  	          <% } %>       		    
+		    <% } %>
+
+		    
+		    <%  if (nutritional_claims.length > 0) { %>
+		      <br>
+   		      <div class="demo alert">Additional Nutritional Info</div>
+   		      <%  for (var l=0; l < nutritional_claims.length; l++) { %>
+   		        <div class="demo subhheadline"><%= nutritional_claims[l] %></div>
+  	          <% } %>       		    
+		    <% } %>
+
+			<% if (warning.length > 0) { %>
+  		      <br>
+			  <div class="demo alert">One or more nutrients are above your recommended guidelines. Please scroll down for details.</div>  
+			<br>
+			<% } %>
+
+		    <br>    
+
+            <div id="nutritiontable">
+			    <div id="nutritionbox">			    			    
+				    <div id="data1">
+			            <div class="labelcell">NUTRIENT</div>
+			            <div class="labelcell">VALUE</div>
+			            <div class="spacercell">&nbsp;</div>
+
+			            <div class="labelcell">NUTRIENT</div>
+			            <div class="valuecell">VALUE</div>
+			            <div class="spacercell">&nbsp;</div>
+				    
+				      <%  if (nutrients.length > 0) for (var i=0; i < nutrients.length; i++) { %>
+				            <div class="labelcell"><%=nutrients[i].label%></div>
+				            <div class="labelcell"><%=nutrients[i].value%></div>
+				            <div class="spacercell">&nbsp;</div>
+				      <% } %>    
+				      <div style="clear: both;"></div>
+				      <a href="javascript:toggleDiv()">More...</a>
+				    </div>
+			
+				    <div id="data2" style="display: none">
+	   		            <div class="labelcell">NUTRIENT</div>
+			            <div class="labelcell">VALUE</div>
+			            <div class="spacercell"></div>
+			
+			            <div class="labelcell">NUTRIENT</div>
+			            <div class="labelcell">VALUE</div>
+			            <div class="spacercell"></div>			    
+				    
+				      <%  nutrients = nutrients_all; %>
+				      <%  if (nutrients.length > 0) for (var i=0; i < nutrients.length; i++) { %>
+				            <div class="labelcell"><%=nutrients[i].label%></div>
+				            <div class="valuecell"><%=nutrients[i].value%></div>
+				            <div class="spacercell">&nbsp;</div>
+				      <% } %>    
+				      <div style="clear: both;"></div>
+				    </div>
+				</div>
+		    </div>
+		    <div style="clear: both;"></div>     
+		    <div class="fineprint">*NA: information not available for this nutrient.</div> 
+		    <div style="clear: both;"></div> 
+		    <div>
+		    <br>
+		    <br>
+<div style="clear:both"></div>
+		    
+<% for (var i = 0; i < warning.length; i++) {
+  var warn = warning[i];
+%>
+<div style="clear:both"></div>
+<div class='alertbox'>
+<span class="color-red"><b><%= warn.nutrient %></b> is not within your recommended guidelines.</span>
+<table>
+<tr>
+    <td width="50%" align"left"><b>NUTRIENT</b></td>
+	<td width="50%"><%= warn.nutrient %></td>
+</tr>	
+<tr>	            
+	<td><b>Meal RV*</b></td>
+	<td><%= warn.recommended_value %></td>
+</tr>	
+<tr>	
+	<td><b>Dish Nutritional Value</b></td>
+	<td><%= warn.dish_nutritial_value %></td>
+</tr>
+<tr>		
+	<td><b>Nutrient Difference</b></td>
+	<% var ndval = warn.nutritional_difference; if (parseInt(ndval) > 0) {ndval = '+' + ndval; } %>
+	<td><span class="color-red"><%= ndval %></span></td>
+</tr>
+<tr>			
+	<td><b>Dish % Meal RV*</b></td>
+	<td><%= warn.percent_meal_rv %></td>
+</tr>
+<tr>			
+	<td><b>Dish % Day RV*</b></td>	         
+	<td><%= warn.percent_daily_rv %></td>
+</tr>
+</table>
+</div>
+<% } %>
+
+<div class="demo subhheadline">*RV = Recommended Value</div>
+
+<!--		    				        
+< %= debug % >
+-->		    
+
+<!-- needed for extra scroll room -->
+<br>
+<br>
+<br>
+<br>
+		    </div>
+	    </div>
+    </div>
+  <div>
+
+<script language=javascript type='text/javascript'>
+var _button = document.getElementById("kudos");
+_button.onmousedown = function() {
+  Ti.App.fireEvent('app.showkudos', { dishid: '<%= id %>' });
+  return false;
+} 
+</script>
+
+</body>
+</html>
